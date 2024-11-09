@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input {
+  @apply border shadow-sm rounded-lg p-1 leading-normal;
+}
+
+hr {
+  @apply my-3
+}

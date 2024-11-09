@@ -1,0 +1,16 @@
+docs/*
+docs/.*
+!docs/documentation
+!docs/examples
+
+# Logs
+logs
+*.log
+pnpm-debug.log*
+
+node_modules
+dist
+dist-ssr
+
+.vscode/*
+!.vscode/extensions.json

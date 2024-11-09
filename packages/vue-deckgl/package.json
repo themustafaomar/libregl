@@ -1,0 +1,27 @@
+{
+  "name": "vue-deckgl",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/vue-deckgl.js",
+  "module": "./dist/vue-deckgl.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/vue-deckgl.js",
+    "default": "./dist/vue-deckgl.js",
+    "types": "./dist/index.d.ts"
+  },
+  "scripts": {
+    "dev": "concurrently 'vite build --watch --minify false' 'vue-tsc --watch --declaration --emitDeclarationOnly --noEmit false --outDir ./dist'",
+    "build": "vue-tsc && vite build"
+  },
+  "dependencies": {
+    "@deck.gl/mapbox": "^9.0.29",
+    "deck.gl": "^9.0.29",
+    "vue": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.2",
+    "vue-tsc": "^2.0.29"
+  }
+}

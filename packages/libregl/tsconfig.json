@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "baseUrl": "./",
+    "outDir": "./_types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.1.0",
+    "libregl": "workspace:*",
+    "maplibre-gl": "^4.6.0",
+    "maplibregl-mapbox-request-transformer": "^0.0.2",
+    "tailwind-scrollbar": "^3.1.0",
+    "vue": "^3.5.5",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.44",
+    "tailwindcss": "^3.4.10",
+    "vue-tsc": "^2.0.29"
+  }
+}
