@@ -1,5 +1,4 @@
 import {
-  Ref,
   defineComponent,
   h,
   onMounted,
@@ -25,10 +24,8 @@ import {
   StyleSpecification,
 } from 'maplibre-gl'
 import { mapKey } from '../types'
-import { useEvents, useListeners } from '../hooks/core'
+import { useEvents, useListeners, useMapOptions } from '../hooks/core'
 import { defineMap, deleteMap, MapId } from '../hooks/useMap'
-import { normalizeOptions } from '../util'
-import { useMapDefaults } from '../hooks/core'
 
 const immediateEvents = [
   'zoomend',
@@ -167,24 +164,20 @@ export const Map = defineComponent({
     'update:rotate',
   ],
   setup(props, { slots, emit, expose }) {
+    const { height, width, ...options } = useMapOptions(props)
+
     const map = shallowRef<MapLibre>()
     const isLoaded = shallowRef(false)
-    const mapRef: Ref<HTMLElement | string> = shallowRef('')
+    const mapRef = shallowRef<HTMLElement | string>()
 
-    const { style, center, attributionControl, height, width, ...options } = props
-    const { onEvent } = useEvents(map)
     const lazyListeners = useListeners()
-    const defaults = useMapDefaults()
-
+    const { onEvent } = useEvents(map)
     const context = { map, mapRef, isLoaded }
 
     const createMap = () => {
       map.value = new MapLibre({
-        container: mapRef.value,
-        style: style || defaults.style,
-        center: center || defaults.center,
-        attributionControl: attributionControl || defaults.attributionControl || true,
-        ...normalizeOptions(options),
+        container: mapRef.value!,
+        ...options,
       })
       defineMap(props.id, context as any)
 
@@ -246,7 +239,7 @@ export const Map = defineComponent({
         'div',
         {
           ref: mapRef,
-          style: `width: ${width || defaults.width}; height: ${height || defaults.height};`,
+          style: `width: ${width}; height: ${height};`,
         },
         map.value && slots.default ? slots.default() : undefined
       )
