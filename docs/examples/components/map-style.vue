@@ -2,7 +2,13 @@
 import { ref } from 'vue'
 import { Map } from 'libregl'
 
-const style = ref(`https://api.maptiler.com/maps/streets-v2/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`)
+const currentStyle = ref(`https://api.maptiler.com/maps/streets-v2/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`)
+const styles = [
+  { name: 'Streets', style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}` },
+  { name: 'Outdoors', style: `https://api.maptiler.com/maps/outdoor-v2/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}` },
+  { name: 'Satellite', style: `https://api.maptiler.com/maps/satellite/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}` },
+  { name: 'Hybrid', style: `https://api.maptiler.com/maps/hybrid/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}` },
+]
 </script>
 
 <template>
@@ -10,14 +16,13 @@ const style = ref(`https://api.maptiler.com/maps/streets-v2/style.json?key=${imp
     height="400px"
     :center="[18, 48]"
     :zoom="3"
-    :style
+    :style="currentStyle"
   >
   </Map>
 
-  <select v-model="style" class="border rounded-lg mt-5">
-    <option value="https://api.maptiler.com/maps/streets-v2/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL">Streets</option>
-    <option value="https://api.maptiler.com/maps/outdoor-v2/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL">Outdoors</option>
-    <option value="https://api.maptiler.com/maps/satellite/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL">Satellite</option>
-    <option value="https://api.maptiler.com/maps/hybrid/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL">Hybrid</option>
+  <select v-model="currentStyle" class="border rounded-lg mt-5">
+    <option v-for="style in styles" :key="style.name" :value="style.style">
+      {{ style.name }}
+    </option>
   </select>
 </template>
