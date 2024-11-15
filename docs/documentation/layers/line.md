@@ -19,7 +19,7 @@ The *LineLayer* component is typically used within a parent source component, su
 
 ## Style customization
 
-You can also configure the appearance and behavior of the layer using the layout and paint options, similar to other layers in vue-libregl.
+You can also configure the appearance and behavior of the layer using the layout and paint options, similar to other layers in libregl.
 
 Also, the component exposes a `paint()` method, which allows you to modify the paint properties of the layer programmatically.
 
@@ -45,7 +45,7 @@ And of course, when using *CircleLayer* without a parent source component, you c
 
 ## Rerendering data
 
-The data prop in the *GeojsonSource* is reactive, once the data changes, vue-libregl automatically rerenders the layer like a charm, ensuring your map always reflects the latest data, here is an example.
+The data prop in the *GeojsonSource* is reactive, once the data changes, libregl automatically rerenders the layer like a charm, ensuring your map always reflects the latest data, here is an example.
 
 <example id="layers/line-data" />
 

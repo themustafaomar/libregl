@@ -23,7 +23,7 @@ The *CircleLayer* allows you to customize the appearance of circles using variou
 
 ## Style customization
 
-You can also configure the appearance and behavior of the layer using the layout and paint options, similar to other layers in vue-libregl.
+You can also configure the appearance and behavior of the layer using the layout and paint options, similar to other layers in libregl.
 
 Also, the component exposes a `paint()` method, which allows you to modify the paint properties of the layer programmatically.
 

@@ -15,7 +15,7 @@ const style = `https://api.maptiler.com/maps/streets-v2/style.json?key=${import.
       position="bottom-right"
       :custom-attribution='[
         "<a href=\"https://maplibre.org\" target=\"_blank\">© MapLibre</a>",
-        "<a href=\"https://vue-libregl.vercel.app\" target=\"_blank\">© LibreGL</a>",
+        "<a href=\"https://libregl.vercel.app\" target=\"_blank\">© LibreGL</a>",
       ]'
     >
     </AttributionControl>
