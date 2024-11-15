@@ -1,7 +1,7 @@
 ---
-title: VideoSource
+title: ImageSource
 metadata:
-  title: VideoSource
+  title: ImageSource
   description: The ImageSource component allows you to display a single, non-tiled image on the map.
 ---
 
