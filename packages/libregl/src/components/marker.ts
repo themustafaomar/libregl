@@ -19,6 +19,7 @@ import {
 } from 'maplibre-gl'
 import { ListenerRegistery, markerKey } from '../types'
 import { useContext } from '../hooks/core'
+import { normalizeOptions } from '../util'
 
 export type MarkerEvent = {
   type: 'dragstart' | 'drag' | 'dragend'
@@ -38,37 +39,25 @@ export const Marker = defineComponent({
     },
     draggable: {
       type: Boolean,
-      default: false,
+      // This ensures that the normalizeOptions function won't return a value unless it's a boolean.
+      default: undefined,
     },
-    offset: {
-      type: Object as PropType<PointLike>,
-      default: () => [0, 0],
-    },
-    pitchAlignment: {
-      type: String as PropType<Alignment>,
-      default: 'auto',
-    },
-    rotation: {
-      type: Number,
-      default: 0,
-    },
-    rotationAlignment: {
-      type: String as PropType<Alignment>,
-      default: 'auto',
-    },
+    offset: Object as PropType<PointLike>,
+    pitchAlignment: String as PropType<Alignment>,
+    rotation: Number,
+    rotationAlignment: String as PropType<Alignment>,
     onClick: Function as PropType<(e: MarkerEvent) => void>,
     onDragStart: Function as PropType<(e: MarkerEvent) => void>,
     onDrag: Function as PropType<(e: MarkerEvent) => void>,
     onDragEnd: Function as PropType<(e: MarkerEvent) => void>,
-    modelValue: {
-      type: Boolean,
-      default: true,
-    },
+    modelValue: { type: Boolean, default: true },
   },
   emits: ['update:coordinates'],
   setup(props, { slots, expose, emit }) {
     const { modelValue, ...options } = props
-    const marker = shallowRef<MlMarker>(new MlMarker(options))
+    const marker = shallowRef<MlMarker>(new MlMarker(
+      normalizeOptions(options)
+    ))
     const setLngLat = (lngLat: LngLatLike) => marker.value.setLngLat(lngLat)
     setLngLat(
       (isProxy(props.coordinates)
