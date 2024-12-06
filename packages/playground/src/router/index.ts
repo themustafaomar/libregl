@@ -44,6 +44,11 @@ export const router: Router = createRouter({
       component: () => import('../pages/markers.vue'),
     },
     {
+      path: '/popups',
+      name: 'popups',
+      component: () => import('../pages/popups.vue'),
+    },
+    {
       path: '/layers/background',
       name: 'background',
       component: () => import('../pages/layers/background.vue'),
