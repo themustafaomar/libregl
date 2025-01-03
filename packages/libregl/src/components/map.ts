@@ -51,9 +51,7 @@ export const Map = defineComponent({
     },
     maplibreLogo: Boolean,
     logoPosition: String as PropType<ControlPosition>,
-    failIfMajorPerformanceCaveat: Boolean,
-    preserveDrawingBuffer: Boolean,
-    antialias: { type: Boolean, default: undefined },
+    canvasContextAttributes: Object as PropType<WebGLContextAttributes>,
     refreshExpiredTiles: { type: Boolean, default: true },
     maxBounds: Object as PropType<LngLatBoundsLike>,
     scrollZoom: {
