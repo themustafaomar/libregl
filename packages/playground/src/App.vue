@@ -6,6 +6,7 @@ const examples = [
   { title: 'Map/Rotate camera', to: '/map/rotate-camera' },
   { title: 'Markers', to: '/markers' },
   { title: 'Popups', to: '/popups' },
+  { title: 'Controls', to: '/controls' },
   { title: 'Layers / Background', to: '/layers/background' },
   { title: 'Layers / Circle', to: '/layers/circle' },
   { title: 'Layers / FillExtrusion', to: '/layers/fill-extrusion' },
