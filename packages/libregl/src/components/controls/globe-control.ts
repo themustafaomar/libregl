@@ -8,11 +8,11 @@ import { useContext } from '../../hooks/core'
 export const GlobeControl = defineComponent({
   name: 'GlobeControl',
   props: { position: String as PropType<ControlPosition> },
-  setup() {
+  setup(props) {
     const globe = shallowRef<MlGlobeControl>(new MlGlobeControl())
 
     const { map } = useContext()
-    map.value.addControl(globe.value, 'top-left')
+    map.value.addControl(globe.value, props.position)
 
     onUnmounted(() => {
       if (!globe.value) return
