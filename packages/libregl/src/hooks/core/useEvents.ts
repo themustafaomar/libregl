@@ -1,27 +1,26 @@
 import { onUnmounted, Ref, shallowRef } from 'vue'
-import { Map as Maplibre } from 'maplibre-gl'
-
-type Listener = (...args: any) => void
+import { Map as Maplibre, Subscription } from 'maplibre-gl'
 
 export function useEvents(map: Ref<Maplibre | undefined>) {
-  const registry = shallowRef(new Map<string, Listener>())
+  const registry = shallowRef<Subscription[]>([])
 
-  const onEvent = (name: string, listener: Listener) => {
-    map.value!.on(name, listener)
-    registry.value.set(name, listener)
+  const onEvent = (
+    name: string,
+    listener: (...args: any) => void
+  ) => {
+    registry.value.push(map.value!.on(name, listener))
+
     return listener
   }
 
   const _flush = () => {
-    registry.value.forEach((listener, name) => {
-      map.value!.off(name, listener)
+    registry.value.forEach((subscription: Subscription) => {
+      subscription.unsubscribe()
     })
-    registry.value.clear()
+    registry.value = []
   }
 
-  onUnmounted(() => {
-    _flush()
-  })
+  onUnmounted(_flush)
 
   return { onEvent }
 }

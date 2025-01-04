@@ -10,7 +10,7 @@
   "dependencies": {
     "@turf/turf": "^7.1.0",
     "libregl": "workspace:*",
-    "maplibre-gl": "^4.6.0",
+    "maplibre-gl": "^5.0.0",
     "maplibregl-mapbox-request-transformer": "^0.0.2",
     "tailwind-scrollbar": "^3.1.0",
     "vue": "^3.5.5",

@@ -51,9 +51,7 @@ export const Map = defineComponent({
     },
     maplibreLogo: Boolean,
     logoPosition: String as PropType<ControlPosition>,
-    failIfMajorPerformanceCaveat: Boolean,
-    preserveDrawingBuffer: Boolean,
-    antialias: { type: Boolean, default: undefined },
+    canvasContextAttributes: Object as PropType<WebGLContextAttributes>,
     refreshExpiredTiles: { type: Boolean, default: true },
     maxBounds: Object as PropType<LngLatBoundsLike>,
     scrollZoom: {
@@ -83,6 +81,7 @@ export const Map = defineComponent({
     cooperativeGestures: Boolean as PropType<GestureOptions>,
     trackResize: { type: Boolean, default: true },
     center: Object as PropType<LngLatLike>,
+    elevation: Number,
     zoom: Number,
     bearing: Number,
     pitch: Number,
@@ -105,6 +104,7 @@ export const Map = defineComponent({
     validateStyle: { type: Boolean, default: true },
     maxCanvasSize: null as unknown as PropType<[number, number]>,
     cancelPendingTileRequestsWhileZooming: { type: Boolean, default: true },
+    centerClampedToGround: { type: Boolean, default: true },
   },
   emits: [
     'error',

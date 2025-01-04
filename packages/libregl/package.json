@@ -1,6 +1,6 @@
 {
   "name": "libregl",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-beta.1",
   "type": "module",
   "main": "./dist/libregl.js",
   "module": "./dist/libregl.esm.js",
@@ -16,12 +16,15 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "maplibre-gl": "^4.7.0",
+    "maplibre-gl": "^5.0.0",
     "vue": "^3.4.37"
   },
   "devDependencies": {
     "@types/geojson": "^7946.0.14",
     "vue-tsc": "^2.1.10"
   },
-  "files": ["dist", "README.md"]
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
