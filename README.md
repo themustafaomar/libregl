@@ -37,13 +37,6 @@ app.use(libregl({
 app.mount('#app')
 ```
 
-## Todos
-
-- [ ] Add the url Edit on Github button markdown file url.
-- [ ] Copy to clipboard button.
-- [ ] Releasing the stable v1.0.0.
-- [ ] DeckGL support.
-
 ## License
 
 LibreGL is released under the MIT License.

@@ -9,6 +9,8 @@ This section covers all the release notes for LibreGL.
 
 ## v0.0.0-beta.2 (latest)
 
+This release updates [maplibre-gl](https://github.com/maplibre/maplibre-gl-js/) to v5.0.0 for more information about what's changed please visit the release notes at https://github.com/maplibre/maplibre-gl-js/releases/tag/v5.0.0
+
 - refactor: move WebGL context options to canvasContextAttributes ([80d9f8e](https://github.com/themustafaomar/libregl/pull/3/commits/bd54b727354b5fc778a42b45f09be3cf7fae94b5))
 - refactor: leverage unsubscribe method to unsubscribe events ([80d9f8e](https://github.com/themustafaomar/libregl/pull/3/commits/80d9f8e33bbc6f3d9fe3c123f85b7b82afb35f59))
 - feat(controls): add globe control ([ea29d81](https://github.com/themustafaomar/libregl/pull/3/commits/ea29d81e62d1fd2b41524c25c436b93bef488138))
