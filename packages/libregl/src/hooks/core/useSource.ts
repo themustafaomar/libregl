@@ -6,7 +6,7 @@ export function useSource(source?: SourceSpecification | string) {
   const sourceId = inject(sourceKey, null)
   if (!source && sourceId === null) {
     throw new Error(
-      'Missing a parent <MlSource> component, are you sure you are inside a <MlSource>.'
+      'Missing a parent <*Source> component, are you sure you are inside a <*Source>.'
     )
   }
   return source || sourceId
