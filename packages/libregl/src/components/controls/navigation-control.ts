@@ -1,7 +1,7 @@
-import { defineComponent, shallowRef, onUnmounted, PropType } from 'vue'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
 import {
-  ControlPosition,
   NavigationControl as MlNavigationControl,
+  ControlPosition,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
 import { normalizeOptions } from '../../util'
@@ -10,15 +10,9 @@ export const NavigationControl = defineComponent({
   name: 'NavigationControl',
   props: {
     position: String as PropType<ControlPosition>,
-    showCompass: {
-      type: Boolean,
-      default: true,
-    },
-    showZoom: {
-      type: Boolean,
-      default: true,
-    },
-    visualizePitch: Boolean,
+    showCompass: { type: Boolean, default: undefined },
+    showZoom: { type: Boolean, default: undefined },
+    visualizePitch: { type: Boolean, default: undefined },
   },
   setup(props) {
     const { position, ...options } = props

@@ -1,4 +1,4 @@
-import { defineComponent, shallowRef, onUnmounted, PropType } from 'vue'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
 import {
   AttributionControl as MlAttributionControl,
   ControlPosition,
@@ -10,7 +10,7 @@ export const AttributionControl = defineComponent({
   name: 'AttributionControl',
   props: {
     position: String as PropType<ControlPosition>,
-    compact: { type: Boolean, default: true },
+    compact: { type: Boolean, default: undefined },
     customAttribution: [String, Array] as PropType<string | Array<string>>,
   },
   setup(props) {

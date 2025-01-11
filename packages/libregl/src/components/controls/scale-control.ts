@@ -1,5 +1,5 @@
-import { defineComponent, shallowRef, onUnmounted, PropType } from 'vue'
-import { ControlPosition, ScaleControl as MlScaleControl, Unit } from 'maplibre-gl'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
+import { ScaleControl as MlScaleControl, ControlPosition, Unit } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
 import { normalizeOptions } from '../../util'
 

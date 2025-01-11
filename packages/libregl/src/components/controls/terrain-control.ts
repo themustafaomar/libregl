@@ -1,7 +1,7 @@
-import { defineComponent, shallowRef, onUnmounted, PropType } from 'vue'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
 import {
-  ControlPosition,
   TerrainControl as MlTerrainControl,
+  ControlPosition,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
 

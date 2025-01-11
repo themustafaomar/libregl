@@ -1,7 +1,7 @@
-import { PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
 import {
-  ControlPosition,
   GeolocateControl as MlGeolocateControl,
+  ControlPosition,
   FitBoundsOptions,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
@@ -27,8 +27,8 @@ export const GeolocateControl = defineComponent({
     positionOptions: Object as PropType<PositionOptions>,
     fitBoundsOptions: Object as PropType<FitBoundsOptions>,
     trackUserLocation: Boolean,
-    showAccuracyCircle: { type: Boolean, default: true },
-    showUserLocation: { type: Boolean, default: true },
+    showAccuracyCircle: { type: Boolean, default: undefined },
+    showUserLocation: { type: Boolean, default: undefined },
   },
   emits: Array.from(geoLocationEvents),
   setup(props, { emit }) {

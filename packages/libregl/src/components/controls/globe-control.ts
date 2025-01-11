@@ -1,7 +1,7 @@
-import { PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
 import {
-  ControlPosition,
   GlobeControl as MlGlobeControl,
+  ControlPosition,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
 

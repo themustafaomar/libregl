@@ -1,5 +1,5 @@
-import { defineComponent, shallowRef, onUnmounted, PropType } from 'vue'
-import { ControlPosition, LogoControl as MlLogoControl } from 'maplibre-gl'
+import { type PropType, defineComponent, shallowRef, onUnmounted } from 'vue'
+import { LogoControl as MlLogoControl, ControlPosition } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
 import { normalizeOptions } from '../../util'
 
@@ -7,7 +7,7 @@ export const LogoControl = defineComponent({
   name: 'LogoControl',
   props: {
     position: String as PropType<ControlPosition>,
-    compact: Boolean,
+    compact: { type: Boolean, default: undefined },
   },
   setup(props, { expose }) {
     const { position, ...options } = props
