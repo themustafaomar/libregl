@@ -1,34 +1,23 @@
-import { defineComponent, onUnmounted } from 'vue'
-import { GeoJSONSourceSpecification, LineLayerSpecification } from 'maplibre-gl'
-import { useSource, useContext, useLayerExposes } from '../../hooks/core'
-import { removeLayer } from '../../util/remove-layer'
+import { defineComponent } from 'vue'
+import {
+  GeoJSONSourceSpecification,
+  LineLayerSpecification,
+} from 'maplibre-gl'
+import { useLayer, layerEvents, useLayerExposes } from '../../hooks/core'
 import { props } from '../../shared/layer-props'
-import { normalizeOptions } from '../../util'
 
 const TYPE = 'line'
 const UID_PREFIX = `${TYPE}-layer`
 
 export const LineLayer = defineComponent({
   name: 'LineLayer',
+  emits: Object.assign(layerEvents, []),
   props: props<LineLayerSpecification, GeoJSONSourceSpecification>(UID_PREFIX),
   setup(props, { expose }) {
-    const { source, sourceLayer, beforeId, ...options } = props
-    const newSource = useSource(source)
-    const { map, onLoaded } = useContext()
-    onLoaded(() =>
-      map.value.addLayer(
-        {
-          type: TYPE,
-          source: newSource,
-          'source-layer': sourceLayer,
-          ...normalizeOptions(options),
-        } as LineLayerSpecification,
-        beforeId
-      )
-    )
+    const { map, layer } = useLayer<LineLayerSpecification>(TYPE, props)
 
-    onUnmounted(() => removeLayer(map, props.id))
-    expose(useLayerExposes(map, props.id))
+    expose(useLayerExposes(map, props.id, layer))
+
+    return () => {}
   },
-  render: () => null,
 })
