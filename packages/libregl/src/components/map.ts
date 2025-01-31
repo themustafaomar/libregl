@@ -22,6 +22,7 @@ import {
   LngLatLike,
   RequestTransformFunction,
   StyleSpecification,
+  MapEventType,
 } from 'maplibre-gl'
 import { mapKey } from '../types'
 import { useEvents, useListeners, useMapOptions } from '../hooks/core'
@@ -207,7 +208,7 @@ export const Map = defineComponent({
         ) {
           return
         }
-        onEvent(name, listener)
+        onEvent(name as keyof MapEventType, listener)
       })
     }
 

@@ -1,5 +1,6 @@
 export * from './useContext'
 export * from './useSource'
+export * from './useLayer'
 export * from './useLayerExposes'
 export * from './useMapOptions'
 export * from './useEvents'

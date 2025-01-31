@@ -1,11 +1,12 @@
-import { Ref, unref } from 'vue'
-import { Map } from 'maplibre-gl'
+import { ShallowRef, unref } from 'vue'
+import { Evented, Map } from 'maplibre-gl'
 
 type MaybePaintPropOrConfig = string | Record<string, any>
 
 export function useLayerExposes(
-  map: Ref<Map>,
+  map: ShallowRef<Map>,
   id: string,
+  layer: ShallowRef<Evented | undefined>,
 ) {
   const maplibre = unref(map)
   const hide = () => maplibre.setLayoutProperty(id, 'visibility', 'none')
@@ -31,6 +32,7 @@ export function useLayerExposes(
     maplibre.setLayoutProperty(id, key, value)
   }
   const getId = () => id
+  const getLayer = () => layer.value
 
-  return { hide, show, toggle, layout, paint, getId }
+  return { hide, show, toggle, layout, paint, getId, getLayer }
 }

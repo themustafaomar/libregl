@@ -1,33 +1,20 @@
-import { defineComponent, onUnmounted } from 'vue'
+import { defineComponent } from 'vue'
 import { CircleLayerSpecification, GeoJSONSourceSpecification } from 'maplibre-gl'
-import { useContext, useLayerExposes, useSource } from '../../hooks/core'
+import { useLayerExposes, useLayer, layerEvents } from '../../hooks/core'
 import { props } from '../../shared/layer-props'
-import { normalizeOptions, removeLayer } from '../../util'
 
 const TYPE = 'circle'
 const UID_PREFIX = `${TYPE}-layer`
 
 export const CircleLayer = defineComponent({
   name: 'CircleLayer',
+  emits: Object.assign(layerEvents, []),
   props: props<CircleLayerSpecification, GeoJSONSourceSpecification>(UID_PREFIX),
   setup(props, { expose }) {
-    const { source, sourceLayer, beforeId, ...options } = props
-    const newSource = useSource(source)
-    const { map, onLoaded } = useContext()
-    onLoaded(() =>
-      map.value.addLayer(
-        {
-          type: TYPE,
-          source: newSource,
-          'source-layer': sourceLayer,
-          ...normalizeOptions(options),
-        } as CircleLayerSpecification,
-        beforeId
-      )
-    )
+    const { map, layer } = useLayer<CircleLayerSpecification>(TYPE, props)
 
-    onUnmounted(() => removeLayer(map, props.id))
-    expose(useLayerExposes(map, props.id))
+    expose(useLayerExposes(map, props.id, layer))
+
+    return () => {}
   },
-  render: () => null,
 })
