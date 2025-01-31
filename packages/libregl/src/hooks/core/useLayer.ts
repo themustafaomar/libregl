@@ -50,7 +50,7 @@ export function useLayer<T extends LayerSpecification>(
       ...normalizeOptions(options),
     } as T,
     beforeId
-  ))
+  ).getLayer(props.id))
 
   const lazyListeners = useListeners()
   const { onEvent } = useEvents(map)
