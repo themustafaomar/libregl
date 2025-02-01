@@ -7,7 +7,15 @@ metadata:
 
 This section covers all the release notes for LibreGL.
 
-## v0.0.0-beta.2 (latest)
+## v0.0.0-beta.3 (latest)
+
+- fix: terrain control options ([#8](https://github.com/themustafaomar/libregl/pull/8)) ([294d676](https://github.com/themustafaomar/libregl/commit/294d6763dcc8932b76800ba9c6659bd6f193b2eb))
+- docs(layers): add layer events section ([#7](https://github.com/themustafaomar/libregl/pull/7)) ([e94ab94](https://github.com/themustafaomar/libregl/commit/e94ab945fd5c6bc4fac8be525553f2e7ca40fc70))
+- chore: enhance the playground examples ([#6](https://github.com/themustafaomar/libregl/pull/6)) ([7f0f913](https://github.com/themustafaomar/libregl/commit/7f0f913d642ea895e79838a191f718c0a414bc19))
+- feat: support listening to layer events ([#5](https://github.com/themustafaomar/libregl/pull/5)) ([43af2df](https://github.com/themustafaomar/libregl/commit/42e29fc9554790e4132281cb051a68a9e39480cf))
+- refactor: organize controls imports and props ([43af2df](https://github.com/themustafaomar/libregl/commit/43af2df08abf8d210c85a71769c2a9d996139b6b))
+
+## v0.0.0-beta.2
 
 This release updates [maplibre-gl](https://github.com/maplibre/maplibre-gl-js/) to v5.0.0 for more information about what's changed please visit the release notes at https://github.com/maplibre/maplibre-gl-js/releases/tag/v5.0.0
 
