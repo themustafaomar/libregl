@@ -4,6 +4,7 @@ import {
   ControlPosition,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
+import { normalizeOptions } from '../../util'
 
 export const TerrainControl = defineComponent({
   name: 'TerrainControl',
@@ -13,12 +14,9 @@ export const TerrainControl = defineComponent({
     exaggeration: Number,
   },
   setup(props, { expose }) {
-    const { position } = props
+    const { position, ...options } = props
     const terrain = shallowRef<MlTerrainControl>(
-      new MlTerrainControl({
-        source: props.source,
-        exaggeration: 1,
-      })
+      new MlTerrainControl(normalizeOptions(options) as typeof options)
     )
 
     const { map } = useContext()
