@@ -13,7 +13,7 @@ export const CircleLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<CircleLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

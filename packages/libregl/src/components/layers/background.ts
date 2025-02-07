@@ -31,7 +31,7 @@ export const BackgroundLayer = defineComponent({
     )
 
     onUnmounted(() => removeLayer(map, props.id))
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

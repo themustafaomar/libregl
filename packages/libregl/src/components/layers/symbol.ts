@@ -16,7 +16,7 @@ export const SymbolLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<SymbolLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

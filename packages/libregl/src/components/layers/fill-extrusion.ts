@@ -16,7 +16,7 @@ export const FillExtrusionLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<FillExtrusionLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

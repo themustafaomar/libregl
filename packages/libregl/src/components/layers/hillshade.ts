@@ -16,7 +16,7 @@ export const HillshadeLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<HillshadeLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

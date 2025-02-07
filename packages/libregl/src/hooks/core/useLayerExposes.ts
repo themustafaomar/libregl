@@ -1,13 +1,13 @@
 import { ShallowRef, unref } from 'vue'
-import { Evented, Map } from 'maplibre-gl'
+import { Map, TypedStyleLayer } from 'maplibre-gl'
 
 type MaybePaintPropOrConfig = string | Record<string, any>
 
 export function useLayerExposes(
   map: ShallowRef<Map>,
-  id: string,
-  layer: ShallowRef<Evented | undefined>,
+  layer: ShallowRef<TypedStyleLayer>,
 ) {
+  const id = layer.value?.id
   const maplibre = unref(map)
   const hide = () => maplibre.setLayoutProperty(id, 'visibility', 'none')
   const show = () => maplibre.setLayoutProperty(id, 'visibility', 'visible')

@@ -16,7 +16,7 @@ export const HeatmapLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<HeatmapLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

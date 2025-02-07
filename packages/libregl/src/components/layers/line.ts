@@ -16,7 +16,7 @@ export const LineLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<LineLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },
