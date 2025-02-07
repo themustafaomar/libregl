@@ -9,9 +9,7 @@ const UID_PREFIX = `${TYPE}-layer`
 export const FillLayer = defineComponent({
   name: 'FillLayer',
   emits: Object.assign(layerEvents, []),
-  props: {
-    ...props<FillLayerSpecification, GeoJSONSourceSpecification>(UID_PREFIX),
-  },
+  props: props<FillLayerSpecification, GeoJSONSourceSpecification>(UID_PREFIX),
   setup(props, { expose }) {
     const { map, layer } = useLayer<FillLayerSpecification>(TYPE, props)
 
