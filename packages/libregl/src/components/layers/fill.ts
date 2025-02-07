@@ -13,7 +13,7 @@ export const FillLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<FillLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

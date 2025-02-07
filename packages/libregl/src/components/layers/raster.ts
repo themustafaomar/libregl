@@ -13,7 +13,7 @@ export const RasterLayer = defineComponent({
   setup(props, { expose }) {
     const { map, layer } = useLayer<RasterLayerSpecification>(TYPE, props)
 
-    expose(useLayerExposes(map, props.id, layer))
+    expose(useLayerExposes(map, layer))
 
     return () => {}
   },

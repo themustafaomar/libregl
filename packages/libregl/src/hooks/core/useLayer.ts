@@ -1,5 +1,5 @@
 import { onUnmounted, shallowRef } from 'vue'
-import { Evented, LayerSpecification } from 'maplibre-gl'
+import { LayerSpecification } from 'maplibre-gl'
 import { useContext, useSource, useListeners, useEvents } from '.'
 import { normalizeOptions, removeLayer } from '../../util'
 
@@ -41,7 +41,7 @@ export function useLayer<T extends LayerSpecification>(
   const { map, onLoaded } = useContext()
   const newSource = useSource(source)
 
-  const layer = shallowRef<Evented>()
+  const layer = shallowRef()
   onLoaded(() => layer.value = map.value.addLayer(
     {
       type,
