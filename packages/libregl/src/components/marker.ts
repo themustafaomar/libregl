@@ -16,9 +16,8 @@ import {
   Alignment,
   PointLike,
   LngLat,
-  Subscription,
 } from 'maplibre-gl'
-import { markerKey } from '../types'
+import { ListenerRegistery, markerKey } from '../types'
 import { useContext } from '../hooks/core'
 import { normalizeOptions } from '../util'
 
@@ -82,7 +81,7 @@ export const Marker = defineComponent({
       }
     )
 
-    const listeners = shallowRef<Subscription[]>([])
+    const listeners = shallowRef<ListenerRegistery<EventType>>([])
     const bindEventListeners = () => {
       bindEvent('dragstart', props.onDragStart!)
       bindEvent('drag', props.onDrag!)
@@ -115,13 +114,18 @@ export const Marker = defineComponent({
           })
         }
       }
-      const subscription = marker.value.on(type, listener)
-      listeners.value.push(subscription)
+      marker.value.on(type, listener)
+      listeners.value.push({
+        type,
+        listener,
+      })
     }
 
     const removeEventListeners = () => {
       if (!listeners.value.length) return
-      listeners.value.forEach((subscription) => subscription.unsubscribe())
+      listeners.value.forEach(({ type, listener }) => {
+        marker.value.off(type, listener)
+      })
       listeners.value = []
     }
     watchEffect(() => {
