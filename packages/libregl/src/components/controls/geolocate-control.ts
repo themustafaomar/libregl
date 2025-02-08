@@ -3,9 +3,9 @@ import {
   GeolocateControl as MlGeolocateControl,
   ControlPosition,
   FitBoundsOptions,
+  Subscription,
 } from 'maplibre-gl'
 import { useContext } from '../../hooks/core'
-import { ListenerRegistery } from '../../types'
 import { normalizeOptions } from '../../util'
 
 const geoLocationEvents = [
@@ -17,8 +17,6 @@ const geoLocationEvents = [
   'error',
   'outofmaxbounds',
 ] as const
-
-type GeolocateEvents = (typeof geoLocationEvents)[number]
 
 export const GeolocateControl = defineComponent({
   name: 'GeolocateControl',
@@ -40,22 +38,17 @@ export const GeolocateControl = defineComponent({
     const { map } = useContext()
     map.value.addControl(geolocate.value, position)
 
-    const listeners = shallowRef<ListenerRegistery<GeolocateEvents>>([])
-    geoLocationEvents.forEach((type: GeolocateEvents) => {
+    const listeners = shallowRef<Subscription[]>([])
+    geoLocationEvents.forEach((type) => {
       const listener = (event: any) => emit(type, event)
-      geolocate.value!.on(type, listener)
-      listeners.value.push({
-        type,
-        listener,
-      })
+      const subscription = geolocate.value!.on(type, listener)
+      listeners.value.push(subscription)
     })
 
     onUnmounted(() => {
       if (!geolocate.value) return
       map.value.removeControl(geolocate.value)
-      listeners.value.forEach(({ type, listener }) => {
-        geolocate.value?.off(type, listener)
-      })
+      listeners.value.forEach((subscription) => subscription.unsubscribe())
     })
 
     return () => {}
