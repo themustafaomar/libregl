@@ -1,10 +1,5 @@
 import type { InjectionKey, Ref, ShallowRef } from 'vue'
-import type { Listener, Map, Marker } from 'maplibre-gl'
-
-export type ListenerRegistery<T> = Array<{
-  type: T
-  listener: Listener
-}>
+import type { Map, Marker } from 'maplibre-gl'
 
 /**
  * The map context with an instance
