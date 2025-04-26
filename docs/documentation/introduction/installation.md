@@ -19,7 +19,25 @@ npm install libregl # pnpm add libregl || yarn add libregl
 
 To get started with libregl in your project, follow these quick and easy steps:
 
-```ts
+:::Code
+
+```vue [index.vue]
+<script setup lang="ts">
+import { Map } from 'libregl'
+</script>
+
+<template>
+  <Map
+    height="400px"
+    :center="[18, 48]"
+    :zoom="3"
+    :style="`https://api.maptiler.com/maps/streets-v2/style.json?key=KEY`"
+  >
+  </Map>
+</template>
+```
+
+```ts [main.ts]
 import { createApp, type App } from 'vue'
 import libregl from 'libregl'
 
@@ -31,6 +49,8 @@ app.use(libregl({
 
 app.mount('#app')
 ```
+
+:::
 
 ## Licence
 
