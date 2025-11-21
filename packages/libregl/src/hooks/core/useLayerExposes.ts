@@ -1,11 +1,11 @@
 import { ShallowRef, unref } from 'vue'
-import { Map, TypedStyleLayer } from 'maplibre-gl'
+import { Map, StyleLayer } from 'maplibre-gl'
 
 type MaybePaintPropOrConfig = string | Record<string, any>
 
 export function useLayerExposes(
   map: ShallowRef<Map>,
-  layer: ShallowRef<TypedStyleLayer>,
+  layer: ShallowRef<StyleLayer>,
 ) {
   const id = layer.value?.id
   const maplibre = unref(map)

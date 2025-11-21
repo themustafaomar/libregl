@@ -19,9 +19,4 @@ type MarkerContext = ShallowRef<Marker>
 
 export const markerKey = Symbol('markerContext') as InjectionKey<MarkerContext>
 
-/**
- * The source context to inject the source id in layers
- */
-export type SourceContext = string
-
 export const sourceKey = Symbol('sourceContext') as InjectionKey<string>
