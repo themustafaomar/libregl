@@ -29,6 +29,7 @@ import { Map } from 'libregl'
 <template>
   <Map
     height="400px"
+    width="600px"
     :center="[18, 48]"
     :zoom="3"
     :style="`https://api.maptiler.com/maps/streets-v2/style.json?key=KEY`"
