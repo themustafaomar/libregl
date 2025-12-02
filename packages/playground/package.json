@@ -8,19 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@turf/turf": "^7.2.0",
+    "@turf/turf": "^7.3.1",
     "libregl": "workspace:*",
-    "maplibre-gl": "^5.3.0",
     "maplibregl-mapbox-request-transformer": "^0.0.2",
     "tailwind-scrollbar": "^3.1.0",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.3",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "vue-tsc": "^2.2.8"
+    "@vitejs/plugin-vue": "^6.0.2",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
   }
 }
