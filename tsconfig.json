@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "types": ["node"],
+    "target": "es2022",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "lib": ["es2020", "dom", "dom.iterable"],
+    "lib": ["es2022", "dom", "dom.iterable"],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
@@ -13,6 +14,6 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   },
 }
