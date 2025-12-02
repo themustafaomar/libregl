@@ -1,6 +1,9 @@
 import { onUnmounted, shallowRef } from 'vue'
 import { LayerSpecification } from 'maplibre-gl'
-import { useContext, useSource, useListeners, useEvents } from '.'
+import { useContext } from './useContext'
+import { useEvents } from './useEvents'
+import { useListeners } from './useListeners'
+import { useSource} from './useSource'
 import { normalizeOptions, removeLayer } from '../../util'
 
 export const layerEvents = [
