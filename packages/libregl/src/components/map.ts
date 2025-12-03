@@ -23,6 +23,7 @@ import {
   RequestTransformFunction,
   StyleSpecification,
   MapEventType,
+  WebGLContextAttributesWithType,
 } from 'maplibre-gl'
 import { mapKey } from '../types'
 import { useEvents, useListeners, useMapOptions } from '../hooks/core'
@@ -45,6 +46,7 @@ export const Map = defineComponent({
     height: { type: String },
     hash: [Boolean, String],
     interactive: { type: Boolean, default: true },
+    container: [HTMLElement, String],
     bearingSnap: Number,
     attributionControl: {
       type: [Boolean, Object] as PropType<false | AttributionControlOptions>,
@@ -52,11 +54,11 @@ export const Map = defineComponent({
     },
     maplibreLogo: Boolean,
     logoPosition: String as PropType<ControlPosition>,
-    canvasContextAttributes: Object as PropType<WebGLContextAttributes>,
+    canvasContextAttributes: Object as PropType<WebGLContextAttributesWithType>,
     refreshExpiredTiles: { type: Boolean, default: true },
     maxBounds: Object as PropType<LngLatBoundsLike>,
     scrollZoom: {
-      type: [Boolean, Object] as PropType<false | AroundCenterOptions>,
+      type: [Boolean, Object] as PropType<boolean | AroundCenterOptions>,
       default: true,
     },
     minZoom: Number,
@@ -86,6 +88,7 @@ export const Map = defineComponent({
     zoom: Number,
     bearing: Number,
     pitch: Number,
+    roll: Number,
     renderWorldCopies: { type: Boolean, default: true },
     maxTileCacheSize: { type: Number, default: null },
     maxTileCacheZoomLevels: Number,
@@ -101,11 +104,17 @@ export const Map = defineComponent({
     localIdeographFontFamily: [String, Boolean] as PropType<string | false>,
     style: [Object, String] as PropType<StyleSpecification | string>,
     pitchWithRotate: { type: Boolean, default: true },
+    rollEnabled: Boolean,
+    reduceMotion: {
+      type: Boolean,
+      default: undefined,
+    },
     pixelRatio: Number,
     validateStyle: { type: Boolean, default: true },
     maxCanvasSize: null as unknown as PropType<[number, number]>,
     cancelPendingTileRequestsWhileZooming: { type: Boolean, default: true },
     centerClampedToGround: { type: Boolean, default: true },
+    experimentalZoomLevelsToOverscale: Number,
   },
   emits: [
     'error',
