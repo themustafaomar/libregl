@@ -1,6 +1,6 @@
 {
   "name": "libregl",
-  "version": "0.0.0-beta.4",
+  "version": "0.0.0-beta.5",
   "type": "module",
   "main": "./dist/libregl.js",
   "module": "./dist/libregl.esm.js",

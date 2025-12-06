@@ -27,12 +27,13 @@ To get started with libregl in your project, follow these quick and easy steps:
 ```ts
 import { createApp, type App } from 'vue'
 import libregl from 'libregl'
+import 'maplibre-gl/dist/maplibre-gl.css'
 
 const app: App = createApp(...)
 
-app.use(libregl({
+app.use(libregl, {
   //
-}))
+})
 
 app.mount('#app')
 ```
