@@ -7,7 +7,13 @@ metadata:
 
 This section covers all the release notes for LibreGL.
 
-## v0.0.0-beta.3 (latest)
+## v0.0.0-beta.6 (latest)
+
+- feat: update marker props ([#15](https://github.com/themustafaomar/libregl/pull/15)) ([eb41808](https://github.com/themustafaomar/libregl/commit/eb41808408ae73e291c544dab18812819f6bb70d))
+- feat: update map's props ([#16](https://github.com/themustafaomar/libregl/pull/16)) ([c259bc0](https://github.com/themustafaomar/libregl/commit/c259bc0a6a97672ea613686245cc62b0a4c086c4))
+- fix(ssr): prop type HTMLElement confueses ssr ([c6b6422](https://github.com/themustafaomar/libregl/commit/c6b6422470d06d6f7eb64ffcff1d8548598145b4))
+
+## v0.0.0-beta.3
 
 - fix: terrain control options ([#8](https://github.com/themustafaomar/libregl/pull/8)) ([294d676](https://github.com/themustafaomar/libregl/commit/294d6763dcc8932b76800ba9c6659bd6f193b2eb))
 - docs(layers): add layer events section ([#7](https://github.com/themustafaomar/libregl/pull/7)) ([e94ab94](https://github.com/themustafaomar/libregl/commit/e94ab945fd5c6bc4fac8be525553f2e7ca40fc70))
