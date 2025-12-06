@@ -46,7 +46,7 @@ export const Marker = defineComponent({
       // This ensures that the normalizeOptions function won't return a value unless it's a boolean.
       default: undefined,
     },
-    element: HTMLElement,
+    element: Object as PropType<HTMLElement>,
     offset: Object as PropType<PointLike>,
     opacity: String,
     opacityWhenCovered: String,

@@ -46,7 +46,7 @@ export const Map = defineComponent({
     height: { type: String },
     hash: [Boolean, String],
     interactive: { type: Boolean, default: true },
-    container: [HTMLElement, String],
+    container: null as unknown as PropType<HTMLElement | string>,
     bearingSnap: Number,
     attributionControl: {
       type: [Boolean, Object] as PropType<false | AttributionControlOptions>,
