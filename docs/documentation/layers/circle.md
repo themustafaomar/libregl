@@ -47,6 +47,12 @@ The data prop in the *GeojsonSource* is reactive, once the data changes, LibreGL
 
 <example id="layers/circle-data" />
 
+## Filtering
+
+The filter prop is reactive as well, when you update the filter, the layer automatically re-applies it under the hood, the component calls MapLibre's `setFilter` method to update the layer instantly.
+
+<example id="layers/circle-filter" />
+
 ## Listening to events
 
 You can listen to layer's events once you pass the event name like `@click`, `@mousemove` and more, to learn more about supported events please visit the offical documentation at [MapLayerEventType](https://maplibre.org/maplibre-gl-js/docs/API/type-aliases/MapLayerEventType/).

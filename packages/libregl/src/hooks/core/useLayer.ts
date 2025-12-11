@@ -1,4 +1,4 @@
-import { onUnmounted, shallowRef } from 'vue'
+import { onUnmounted, shallowRef, watch } from 'vue'
 import { LayerSpecification } from 'maplibre-gl'
 import { useContext } from './useContext'
 import { useEvents } from './useEvents'
@@ -60,6 +60,10 @@ export function useLayer<T extends LayerSpecification>(
 
   lazyListeners.forEach(([name, listener]) => {
     onEvent(name as LayerEvent, props.id, listener)
+  })
+
+  watch(() => props.filter, () => {
+    map.value.setFilter(layer.value.id, props.filter)
   })
 
   onUnmounted(() => {
