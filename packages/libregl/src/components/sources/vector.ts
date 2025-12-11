@@ -26,6 +26,7 @@ export const VectorSource = defineComponent({
     attribution: String,
     promoteId: Object as PropType<PromoteIdSpecification>,
     volatile: Boolean,
+    encoding: String as PropType<'mvt' | 'mlt'>,
   },
   setup(props, { slots, expose }) {
     const { id, ...options } = props
