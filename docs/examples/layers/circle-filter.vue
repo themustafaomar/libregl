@@ -39,5 +39,9 @@ watch(filter, () => {
       </CircleLayer>
     </GeojsonSource>
   </Map>
-  <input v-model="filter" type="text" class="border border-gray-200 shadow-sm leading-normal rounded-lg outline-none focus:shadow-none focus:border-none focus:ring-2 focus:ring-blue-200 w-full p-3 mt-5" />
+  <p class="text-gray-600 text-sm mb-1.5 mt-5">
+    Please feel free to filter by and property in
+    <a href="https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson" target="_blank" class="text-blue-700">ne_50m_urban_areas.geojson</a> example would be <code>[">", ["get", "area_sqkm"], 200]</code>.
+  </p>
+  <input v-model="filter" type="text" class="border border-gray-200 shadow-sm leading-normal rounded-lg outline-none focus:border-blue-300 w-full p-3" />
 </template>
