@@ -23,7 +23,7 @@ import { useContext } from '../hooks/core'
 import { normalizeOptions } from '../util'
 
 export type MarkerEvent = {
-  type: 'dragstart' | 'drag' | 'dragend'
+  type: 'dragstart' | 'drag' | 'dragend' | 'click'
   target: MlMarker
   lngLat: LngLat
 }
@@ -90,6 +90,7 @@ export const Marker = defineComponent({
       }
     )
 
+    let clickHandler: ((e: MouseEvent) => void) | null = null
     const listeners = shallowRef<Subscription[]>([])
     const bindEventListeners = () => {
       bindEvent('dragstart', props.onDragStart!)
@@ -97,12 +98,26 @@ export const Marker = defineComponent({
       bindEvent('dragend', props.onDragEnd!)
     }
     const bindEvent = (type: EventType, handler: (e: MarkerEvent) => void) => {
+      if (!marker.value || typeof handler !== 'function') return
       if (marker.value.listens(type)) {
         return console.warn(
           `[libregl] detected duplication on event [${type}] please report this to https://github.com/themustafaomar/libregl/issues/new`
         )
       }
-      if (!marker.value) return
+      if (type === 'click') {
+        const element = marker.value.getElement()
+        if (!element) return
+        clickHandler = (e: MouseEvent) => {
+          e.stopPropagation()
+          handler({
+            type: 'click',
+            target: marker.value,
+            lngLat: marker.value.getLngLat()
+          })
+        }
+        element.addEventListener('click', clickHandler)
+        return
+      }
       // We always need to bind `dragend` to the marker to allow syncing
       // the v-model:coordinates but we don't need to do it for the other ones
       // so if we don't have a handler we don't need to bind.
@@ -132,11 +147,20 @@ export const Marker = defineComponent({
       listeners.value.forEach((subscription) => subscription.unsubscribe())
       listeners.value = []
     }
+
+    const removeClickEventListener = () => {
+      const element = marker.value.getElement()
+      if (!clickHandler || !element) return
+      element.removeEventListener('click', clickHandler)
+      clickHandler = null
+    }
+
     watchEffect(() => {
       // When draggable is set to true and then changing it to `false`
       // HMR is done, the event listeners are removed but it still
       // dragable, will try to fix this in the future.
       props.draggable ? bindEventListeners() : removeEventListeners()
+      props.onClick ? bindEvent('click', props.onClick) : removeClickEventListener()
     })
     watch(
       () => props.coordinates,
@@ -145,6 +169,7 @@ export const Marker = defineComponent({
 
     onUnmounted(() => {
       removeEventListeners()
+      removeClickEventListener()
       marker.value.remove()
     })
     provide(markerKey, marker)
