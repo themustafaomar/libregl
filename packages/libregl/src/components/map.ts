@@ -48,6 +48,7 @@ export const Map = defineComponent({
     interactive: { type: Boolean, default: true },
     container: null as unknown as PropType<HTMLElement | string>,
     bearingSnap: Number,
+    zoomSnap: Number,
     attributionControl: {
       type: [Boolean, Object] as PropType<false | AttributionControlOptions>,
       default: undefined,
@@ -65,6 +66,7 @@ export const Map = defineComponent({
     maxZoom: Number,
     minPitch: Number,
     maxPitch: Number,
+    anisotropicFilterPitch: null as unknown as PropType<number | null>,
     boxZoom: { type: Boolean, default: true },
     dragRotate: { type: Boolean, default: true },
     dragPan: {
