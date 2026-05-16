@@ -14,6 +14,7 @@ import {
   Popup as MlPopup,
   LngLatLike,
   MapLibreEvent,
+  PaddingOptions,
 } from 'maplibre-gl'
 import { markerKey } from '../types'
 import { useContext } from '../hooks/core'
@@ -52,6 +53,11 @@ export const Popup = defineComponent({
       type: Boolean,
       default: false,
     },
+    locationOccludedOpacity: {
+      type: Number,
+      default: false,
+    },
+    padding: [Number, Object] as PropType<PaddingOptions>,
     text: {
       type: String,
       default: '',
