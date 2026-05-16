@@ -39,6 +39,8 @@ The *Popup* component's props.
 | className | Space-separated CSS class names to add to popup container | *Optional* `string` |
 | maxWidth | A string that sets the CSS property of the popup's maximum width, eg `'300px'`. To ensure the popup resizes to fit its content, set this property to `'none'`. Available values can be found here: https://developer.mozilla.org/en-US/docs/Web/CSS/max-width | *Optional* `string` default is `240px` |
 | subpixelPositioning | If `true`, rounding is disabled for placement of the popup, allowing for subpixel positioning and smoother movement when the popup is translated. | *Optional* `boolean` default is `false` |
+| locationOccludedOpacity | Optional opacity when the location is behind the globe. Note that if a number is provided, it will be converted to a string. | *Optional* `number \| string` default is `undefined` |
+| padding | A pixel padding applied to the popup's positioning constraints. The popup will be positioned to avoid being placed within this padding area from the edges of the map container. | *Optional* [PaddingOptions](https://maplibre.org/maplibre-gl-js/docs/API/type-aliases/PaddingOptions/) default is `undefined` |
 
 ### Events
 
