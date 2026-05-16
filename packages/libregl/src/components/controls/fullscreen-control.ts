@@ -10,6 +10,7 @@ export const FullscreenControl = defineComponent({
   props: {
     position: String as PropType<ControlPosition>,
     container: String,
+    pseudo: { type: Boolean, default: undefined },
   },
   setup(props) {
     const fullscreen = shallowRef<MlFullscreenControl>(
@@ -17,6 +18,7 @@ export const FullscreenControl = defineComponent({
         container: props.container
           ? document.getElementById(props.container) || undefined
           : undefined,
+          pseudo: props.pseudo !== undefined ? props.pseudo : false,
       })
     )
 
