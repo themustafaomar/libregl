@@ -1,12 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["node"],
-    "baseUrl": "./",
+    "rootDir": "./src",
     "outDir": "./_types",
     "declaration": true,
     "emitDeclarationOnly": true,
     "noEmit": false,
+    "ignoreDeprecations": "5.0"
   },
   "include": ["src"]
 }
