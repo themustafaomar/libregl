@@ -43,7 +43,7 @@ const toggleMarker = () => {
     :zoom="3"
     :style="'https://api.maptiler.com/maps/streets-v2/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL'"
   >
-    <!-- <Marker
+    <Marker
       ref="markerRef"
       v-model="showMarker"
       :coordinates="coordinates"
@@ -52,9 +52,10 @@ const toggleMarker = () => {
       :on-drag-end
       draggable
     >
-      <Popup :offset="25" text="Construction on the Washington Monument began in 1848." />
-    </Marker> -->
-    <!-- <Marker :coordinates="[38, 28]" /> -->
-    <Marker v-model:coordinates="coordinates" />
+      <Popup :offset="25">
+        <p class="text-sm text-gray-900">Construction on the Washington Monument began in 1848.</p>
+      </Popup>
+    </Marker>
+    <Marker :coordinates="[38, 28]" />
   </Map>
 </template>

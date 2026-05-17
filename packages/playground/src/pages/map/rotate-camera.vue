@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import { watch } from 'vue'
 import { Map, useMap } from 'libregl'
 import { MapEventType, MapLibreEvent } from 'maplibre-gl'
 
-const { mapRef, map, isLoaded } = useMap('map')
-watch(isLoaded, (value) => {
-  if (!value) return
-  rotateCamera(0)
-})
+const { map } = useMap('main')
 
 function rotateCamera(timestamp: number) {
   // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
@@ -22,6 +17,7 @@ const dragend = (e: MapLibreEvent<MapEventType['dragend']>) => {
 
 <template>
   <Map
+    id="main"
     ref="mapRef"
     height="100vh"
     width="100%"
@@ -30,6 +26,7 @@ const dragend = (e: MapLibreEvent<MapEventType['dragend']>) => {
     :zoom="16"
     :pitch="60"
     @dragend="dragend"
+    @load="rotateCamera(0)"
   >
   </Map>
 </template>
