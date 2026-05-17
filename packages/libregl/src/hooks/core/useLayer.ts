@@ -66,6 +66,12 @@ export function useLayer<T extends LayerSpecification>(
     map.value.setFilter(layer.value.id, props.filter)
   })
 
+  watch(() => props.paint, (paint) => {
+    Object.keys(paint).forEach((prop) => {
+      map.value.setPaintProperty(layer.value.id, prop, paint[prop])
+    })
+  }, { deep: true })
+
   onUnmounted(() => {
     removeLayer(map, props.id)
   })
