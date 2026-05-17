@@ -104,6 +104,9 @@ export const Marker = defineComponent({
           `[libregl] detected duplication on event [${type}] please report this to https://github.com/themustafaomar/libregl/issues/new`
         )
       }
+      // This is deprecated and will be removed soon as `click` event
+      // is supported starting from maplibre-gl v5.18.0. however, we will keep
+      // supporting it for backwards compatibility until we remove it in the future.
       if (type === 'click') {
         const element = marker.value.getElement()
         if (!element) return
