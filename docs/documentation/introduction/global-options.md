@@ -11,18 +11,17 @@ When using LibreGL in a Vue application, you can set global options upon install
 
 This approach simplifies map configuration across your application by letting you specify properties like `style`, `center`, `height`, `width` and `attributionControl` once, rather than repeating them for every *Map* component.
 
-```ts
+```ts [main.ts]
 import { createApp, type App } from 'vue'
 import libregl from 'libregl'
 
 const app: App = createApp(...)
 
-app.use(
-  libregl({
-    style: 'YOUR_STYLE_HERE',
-    height: '100vh',
-  })
-)
+app.use(libregl, {
+  style: 'YOUR_STYLE_HERE',
+  height: '100vh',
+  // ...
+})
 ```
 
 These global settings automatically apply to all *Map* instances, creating a consistent default configuration throughout your app.

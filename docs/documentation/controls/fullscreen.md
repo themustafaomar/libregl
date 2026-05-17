@@ -34,3 +34,4 @@ The *FullscreenControl* component's props.
 | Prop  | Description                                                                                                                                | Type |
 |-------|--------------------------------------------------------------------------------------------------------------------------------------------|------|
 | container | container is the [compatible DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullScreen#Compatible_elements) which should be made full screen. By default, the map container element will be made full screen. | *Optional* `HTMLElement` |
+| pseudo | If `true`, the fullscreen control will always use pseudo fullscreen mode (CSS-based, expanding to browser viewport) instead of native fullscreen API. This can be useful for faster transitions and to allow multiple maps to be "fullscreen" simultaneously in different browser windows. | *Optional* `boolean` default is `false` |

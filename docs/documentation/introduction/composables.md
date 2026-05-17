@@ -17,7 +17,7 @@ By calling useMap with the id of your map component, you can easily access and c
 
 This composable is particularly useful for integrating map logic into your app’s reactive data flow.
 
-```markup
+```markup [ExampleMap.vue]
 <script setup>
 import { Map, useMap } from 'libregl'
 
